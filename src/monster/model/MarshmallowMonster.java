@@ -22,7 +22,6 @@ public class MarshmallowMonster
 		this.tentacleAmount = tentacleCount;
 		this.hasBloop = hasBloop;
 	}
-	
 	public String getName()
 	{
 		return name;

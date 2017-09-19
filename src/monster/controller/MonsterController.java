@@ -75,5 +75,9 @@ public class MonsterController
 				System.out.println("I didn't eat anything and thus I am hangry. I will no longer give you the next question.");
 			}
 		}	
+		popup.displayText("Hey look at me!!!");
+		String answer = popup.getResponse("How many meals are you eating today");
+		System.out.println(answer);
+		popup.displayText(answer);
 	}
 }
