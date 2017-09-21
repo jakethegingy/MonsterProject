@@ -82,7 +82,7 @@ public class MonsterController
 		System.out.println(currentMonster.getName() + " wants to know what to eat next");
 		System.out.println(currentMonster.getName() + " suggests arms, he has " + currentMonster.getArmCount());
 		System.out.println("How many do you want to eat?");
-		int specialAnswer;
+		int specialAnswer = 0;
 		String unconverted = popup.getResponse("How many do you want to eat?");
 		if(isValidInteger(unconverted))
 		{
@@ -90,6 +90,7 @@ public class MonsterController
 		}
 		Scanner myScanner = new Scanner(System.in);
 		int consumed = myScanner.nextInt();
+		consumed = specialAnswer;
 		if(consumed < 0)
 		{
 			popup.displayText(currentMonster.getName() + "You cannot eat a negive ammount silly human");
