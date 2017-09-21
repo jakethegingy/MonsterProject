@@ -39,18 +39,44 @@ public class MonsterController
 			Integer.parseInt(sample);
 			valid = true;
 		}
-		catch(NumberFormatException error)
+		catch (NumberFormatException error)
 		{
 			popup.displayText("Only integer values are valid " + sample + "is not");
 		}
 		 return valid;
 	}
+	private boolean isValidDouble(String sampleDouble)
+	{
+		boolean valid = false;
 		
+		try
+		{
+			Double.parseDouble(sampleDouble);
+			valid = true;
+		}
+		catch (NumberFormatException error)
+		{
+			popup.displayText("Only double values are valid: " + sampleDouble + " is not.");
+		}
 		
+		return valid;
+	}
+	private boolean isValidBoolean(String sampleBoolean)
+	{
+		boolean valid = false;
 		
+		try
+		{
+			Boolean.parseBoolean(sampleBoolean);
+			valid = true;
+		}
+		catch (NumberFormatException error)
+		{
+			popup.displayText("Only boolean values are valid: " + sampleBoolean + " is not.");
+		}
 		
-		
-		
+		return valid;
+	}
 	private void interactWithTheMonster(MarshmallowMonster currentMonster)	
 	{	
 		System.out.println(currentMonster.getName() + " wants to know what to eat next");
@@ -58,7 +84,10 @@ public class MonsterController
 		System.out.println("How many do you want to eat?");
 		int specialAnswer;
 		String unconverted = popup.getResponse("How many do you want to eat?");
-		specialAnswer = Integer.parseInt(unconverted);
+		if(isValidInteger(unconverted))
+		{
+			specialAnswer = Integer.parseInt(unconverted);
+		}
 		Scanner myScanner = new Scanner(System.in);
 		int consumed = myScanner.nextInt();
 		if(consumed < 0)
