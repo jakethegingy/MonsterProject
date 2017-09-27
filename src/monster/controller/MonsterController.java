@@ -15,6 +15,18 @@ public class MonsterController
 	
 	public void start()
 	{
+		//boolean finished = true;
+		//int count = 0;
+		//while(count < 100)
+		//{
+		//	popup.displayText("" + count);
+		//	count++;
+		//}
+		
+		for(int loop = 0; loop < 15; loop += 1)
+		{
+			popup.displayText("I am looping " + (loop + 1) + " times out of 15!");
+		}
 		MarshmallowMonster sample = new MarshmallowMonster();
 		//System.out.println(sample);
 		popup.displayText(sample.toString());
@@ -84,12 +96,20 @@ public class MonsterController
 		System.out.println("How many do you want to eat?");
 		int specialAnswer = 0;
 		String unconverted = popup.getResponse("How many do you want to eat?");
+
+		while(!isValidInteger(unconverted))
+		{
+			popup.displayText("Try again!");
+			unconverted = popup.getResponse("How many arms?????");
+		}
+		
 		if(isValidInteger(unconverted))
 		{
 			specialAnswer = Integer.parseInt(unconverted);
 		}
+		
 		Scanner myScanner = new Scanner(System.in);
-		int consumed = myScanner.nextInt();
+		int consumed = 0;
 		consumed = specialAnswer;
 		if(consumed < 0)
 		{
@@ -113,7 +133,7 @@ public class MonsterController
 			currentMonster.setArmCount(currentMonster.getArmCount() - consumed);
 			System.out.println("Thank you so much! I only have this many arms now: " + currentMonster.getArmCount());
 			consumed = myScanner.nextInt();
-			if(consumed != 6)
+			while(consumed > 0)
 			{
 				popup.displayText(currentMonster.getName() + " wants to know what to eat next");
 				//System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat");
@@ -138,8 +158,9 @@ public class MonsterController
 					popup.displayText(currentMonster.getName() + "I now have" + currentMonster.getEyeCount() + " eyes now");
 					//System.out.println("I now have" + currentMonster.getEyeCount() + " eyes now.");
 				}
+			consumed = consumed - 1;
 			}
-			else
+//			else
 			{
 				popup.displayText(currentMonster.getName() + "I didn't eat anything and thus I am Hangry! I will no longer give you the next question.");
 				//System.out.println("I didn't eat anything and thus I am hangry. I will no longer give you the next question.");
